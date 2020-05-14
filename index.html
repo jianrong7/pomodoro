@@ -6,9 +6,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pomodoro Timer</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <header>
+        <button id="gearBtn"><img src="assets/gear.png" id="gear"></button>
+    </header>
+    <div class="containerLarge">
+        <div id="settings">
+            <div id="pomodoroDuration">Pomodoro Duration</div>
+                <div class="slidecontainer">
+                    <p><span id="pomodoroCounter"></span> Minutes</p>
+                    <input type="range" min="1" max="100" value="25" class="slider" id="pomodoro">
+                </div>
+
+                <div id="shortBreakDuration">Short Break Duration</div>
+                <div class="slidecontainer">
+                    <p><span id="shortBreakCounter"></span> Minutes</p>
+                    <input type="range" min="1" max="100" value="5" class="slider" id="shortBreak">
+                </div>
+
+                <div id="longBreakDuration">Long Break Duration</div>
+                <div class="slidecontainer">
+                    <p><span id="longBreakCounter"></span> Minutes</p>
+                    <input type="range" min="1" max="100" value="15" class="slider" id="longBreak">
+            </div>
+        </div>
+        <div class="container">
+            <div class="circle">
+                <div id="pomodoro">Pomodoro</div>
+                <div id="time">25:00</div>
+            </div>
+            <div class="buttons">
+                <button id="play" class="multimediaBtn"><img class="multimedia" src="assets/play.png"></button>
+                <button id="play" class="multimediaBtn"><img class="multimedia" src="assets/pause.png"></button>
+                <button id="stop" class="multimediaBtn"><img class="multimedia" src="assets/stop.png"></button>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+        <div class="copyright">&copykynki7 2020 | a Pomodoro project</div>
+        <div id="code">source code</div>
+    </footer>
 </body>
 <script src="scripts.js"></script>
 
