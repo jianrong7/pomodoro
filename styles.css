@@ -67,6 +67,25 @@ body {
     border-top: 3px solid #fbc4c4;
     border-radius: 5px;
 }
+#update {
+    margin-top: 20px;
+    height: 30px;
+    width: 70px;
+    background-repeat: no-repeat;
+    background-color: #fbc4c4;
+    color: #d3110d;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+}
+#update:hover {
+    background-color: #e38f5c;
+    transition-duration: 0.3s;
+    font-weight: bold;
+    box-shadow: 2px 3px;
+}
 /* The slider itself */
 .slider {
     -webkit-appearance: none;
