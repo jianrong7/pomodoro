@@ -8,6 +8,14 @@
     #9c2616
     #fbc4c4
     #a4b477     */
+a {
+    text-decoration: none;
+    color: #555923;
+}
+a:hover {
+    font-weight: bold;
+    transition-duration: .3s;
+}
 body {
     font-family: Work Sans, sans-serif;
     font-size: 16px;
