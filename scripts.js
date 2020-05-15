@@ -14,11 +14,12 @@ const keys = document.querySelector("#multimediaButtons");
 const display = document.querySelector('#time');
 
 let isClockRunning = false;
-// // in seconds = 25 mins
 let workSessionDuration = 1500;
 let currentTimeLeftInSession = 1500;
 let breakSessionDuration = 300;
-let timeSpentInCurrentSession = 0;
+let longBreakSessionDuration = 900;
+let type = 'Work';
+let numberOfWork = 0;
 
 function toggleClock(reset) {
     if (reset) {
@@ -43,17 +44,18 @@ function toggleClock(reset) {
 function stepDown() {
     if(currentTimeLeftInSession > 0) {
         currentTimeLeftInSession--;
-        timeSpentInCurrentSession++;
     } else if (currentTimeLeftInSession === 0) {
-        timeSpentInCurrentSession = 0;
             if (type == 'Work') {
                 currentTimeLeftInSession = breakSessionDuration;
-                displaySessionLog('Work');
                 type = 'Break';
-            } else {
+                numberOfWork++;
+            } else if (numberOfWork == 3 && type == 'Work') {
+                currentTimeLeftInSession = longBreakSessionDuration;
+                type = 'Break';
+                numberOfWork = 0;
+            } else if (type == 'Break'){
                 currentTimeLeftInSession = workSessionDuration;
-                displaySessionLog('Break');
-                type = 'Work'
+                type = 'Work';
             }
     }
     displayCurrentTimeLeftInSession();
@@ -70,15 +72,11 @@ function displayCurrentTimeLeftInSession() {
     display.innerText = result.toString();
 }
 function stopClock() {
-    timeSpentInCurrentSession = 0;
-    // reset timer we set
     clearInterval(clockTimer);
-    // update variable to know that timer is stopped
     isClockRunning = false;
-    // reset time left in the session to its original state
     currentTimeLeftInSession = workSessionDuration;
-    // update display
     displayCurrentTimeLeftInSession();
+    type = 'Work';
 }
 
 playBtn.addEventListener('click', () => {
@@ -134,6 +132,7 @@ updateBtn.addEventListener("click", function() {
     workSessionDuration = +(pomodoroSlider.value * 60);
     currentTimeLeftInSession = +(pomodoroSlider.value * 60);
     breakSessionDuration = +(shortBreakSlider.value * 60);
+    longBreakSessionDuration = +(longBreakSlider.value * 60);
     displayCurrentTimeLeftInSession();
 })
 
