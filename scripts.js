@@ -36,7 +36,6 @@ function toggleClock(reset) {
             clockTimer = setInterval(() => {
                 // decrease the time left / increase time spent
                 stepDown();
-                displayCurrentTimeLeftInSession();
             }, 1000)
         }
     }
@@ -130,11 +129,7 @@ longBreakSlider.oninput = function() {
 }
 updateBtn.addEventListener("click", function() {
     workSessionDuration = +(pomodoroSlider.value * 60);
-    currentTimeLeftInSession = +(pomodoroSlider.value * 60);
     breakSessionDuration = +(shortBreakSlider.value * 60);
     longBreakSessionDuration = +(longBreakSlider.value * 60);
     displayCurrentTimeLeftInSession();
-})
-
-
-// MAKE CIRCLE MOVE WHEN TIMER STARTS
+});
